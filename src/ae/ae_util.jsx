@@ -110,9 +110,13 @@ EDLAE.ae.util = (function () {
                 var xmp = xf.getXMP();
                 xf.closeFile(0);
                 if (xmp) {
-                    var ns = XMPConst.NS_DM;
-                    var tv = xmpVal(xmp.getStructField(ns, "startTimecode", ns, "timeValue"));
-                    var tf = xmpVal(xmp.getStructField(ns, "startTimecode", ns, "timeFormat"));
+                    // startTimecode is what Premiere/AE write; the QuickTime handler reports the
+                    // file's timecode track (tmcd) as altTimecode.
+                    var ns = XMPConst.NS_DM, tv = "", tf = "", fields = ["startTimecode", "altTimecode"];
+                    for (var fi = 0; fi < fields.length && !TC.isTC(tv); fi++) {
+                        tv = xmpVal(xmp.getStructField(ns, fields[fi], ns, "timeValue"));
+                        tf = xmpVal(xmp.getStructField(ns, fields[fi], ns, "timeFormat"));
+                    }
                     var reel = xmpVal(xmp.getProperty(ns, "tapeName")) || xmpVal(xmp.getProperty(ns, "altTapeName"));
                     if (tv && TC.isTC(tv)) {
                         var m = /^(\d+)(Drop|NonDrop)?Timecode$/.exec(tf);

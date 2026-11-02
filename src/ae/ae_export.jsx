@@ -160,7 +160,8 @@ EDLAE.ae.exporter = (function () {
                 still = true;
             }
 
-            var t0 = Math.max(L.inPoint, r0), t1 = Math.min(L.outPoint, r1);
+            // time-reversed layers can report inPoint > outPoint
+            var t0 = Math.max(Math.min(L.inPoint, L.outPoint), r0), t1 = Math.min(Math.max(L.inPoint, L.outPoint), r1);
             var recIn = Math.round(t0 * fps) - rangeIn, recOut = Math.round(t1 * fps) - rangeIn;
             if (recOut <= recIn) { continue; }
 

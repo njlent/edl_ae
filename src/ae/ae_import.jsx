@@ -267,9 +267,19 @@ EDLAE.ae.importer = (function () {
 
     // ---- layers ---------------------------------------------------------------
 
+    // AE refuses an in point past the out point (and vice versa), and reversed layers
+    // report the edges swapped until both are set, so try one order and fall back.
     function setInOut(layer, tIn, tOut) {
-        if (tIn >= layer.outPoint) { layer.outPoint = tOut; layer.inPoint = tIn; }
-        else { layer.inPoint = tIn; layer.outPoint = tOut; }
+        var tol = 0.001;
+        function good() { return Math.abs(layer.inPoint - tIn) < tol && Math.abs(layer.outPoint - tOut) < tol; }
+        layer.inPoint = tIn;
+        layer.outPoint = tOut;
+        if (good()) { return; }
+        layer.outPoint = tOut;
+        layer.inPoint = tIn;
+        if (good()) { return; }
+        layer.inPoint = tIn;
+        layer.outPoint = tOut;
     }
 
     function markerValue(mk, fps) {

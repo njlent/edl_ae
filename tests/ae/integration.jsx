@@ -106,6 +106,16 @@
         check(tl.markers.length === 1 && tl.markers[0].frame === 24, "comp marker");
         check(v1[0].markers.length === 1 && v1[0].markers[0].frame === 12, "layer marker relative to clip");
 
+        // a layer only time-reversed (AE then reports inPoint > outPoint)
+        var revComp = app.project.items.addComp("T_Rev", 320, 180, 1, 10, 24);
+        var Lx = revComp.layers.add(a);
+        Lx.stretch = -100;
+        Lx.startTime = 10;
+        var rt = E.ae.exporter.compToTimeline(revComp, {}, {});
+        var rc = rt.video.length ? rt.video[0].clips[0] : null;
+        check(rc && rc.recIn === 0 && rc.recOut === 240 && rc.speed === -1 && rc.srcIn === 86400 + 240,
+            "swapped in/out of a reversed layer exported (" + (rc ? [rc.recIn, rc.recOut, rc.speed, rc.srcIn].join(",") : "none") + ")");
+
         var written = {};
         var fmts = [["xmeml", "xml"], ["fcpxml", "fcpxml"], ["otio", "otio"], ["edl", "edl"], ["csv", "csv"]];
         for (var f = 0; f < fmts.length; f++) {
