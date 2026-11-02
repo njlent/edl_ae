@@ -96,6 +96,16 @@ Some format quirks worth knowing:
 - FCPXML has no sequence-level markers, so comp markers attach to whatever clip or gap sits under them. On import, every marker on the primary storyline becomes a comp marker.
 - In FCPXML, a video clip carries its own audio. Audio-track clips are only written for audio-only media or audio that isn't linked to a video clip.
 
+## Releasing
+
+Changes are tracked in [CHANGELOG.md](CHANGELOG.md). Every user-visible change adds a line under `[Unreleased]` in the same commit. To cut a release:
+
+1. Move the `[Unreleased]` entries into a new `## [x.y.z] - YYYY-MM-DD` section, leave an empty `[Unreleased]` above it and update the compare links at the bottom.
+2. Set `version` in `package.json` to `x.y.z`. The bundle and the panel's status line read it from there.
+3. `npm test`, then build the plugin (`cmake --build plugin/build --config Release`).
+4. Commit, tag `vx.y.z`, push with `--follow-tags`.
+5. `gh release create vx.y.z dist/EDL_AE.jsx plugin/build/Release/EdlAE.aex --title "EDL AE x.y.z" --notes-file <that version's changelog section>`
+
 ## Development
 
 ```
