@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+plugin/build*/
+*.aex
+*.pdb
+*.ilk
+.vs/
+.vscode/
+tests/out/
+tests/ae/out/

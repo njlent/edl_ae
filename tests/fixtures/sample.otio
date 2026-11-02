@@ -1,0 +1,164 @@
+{
+    "OTIO_SCHEMA": "Timeline.1",
+    "metadata": {},
+    "name": "OTIO Sample",
+    "global_start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 86400.0},
+    "tracks": {
+        "OTIO_SCHEMA": "Stack.1",
+        "metadata": {},
+        "name": "tracks",
+        "source_range": null,
+        "effects": [],
+        "markers": [
+            {
+                "OTIO_SCHEMA": "Marker.2",
+                "metadata": {},
+                "name": "otio marker",
+                "color": "RED",
+                "comment": "",
+                "marked_range": {
+                    "OTIO_SCHEMA": "TimeRange.1",
+                    "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 0.0},
+                    "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 86430.0}
+                }
+            }
+        ],
+        "enabled": true,
+        "children": [
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "V1",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "kind": "Video",
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {},
+                        "name": "shot1",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 48.0},
+                            "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 86410.0}
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "shot 1.mov",
+                                "available_range": {
+                                    "OTIO_SCHEMA": "TimeRange.1",
+                                    "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 1000.0},
+                                    "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 86400.0}
+                                },
+                                "available_image_bounds": null,
+                                "target_url": "file:///C:/media/shot%201.mov"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Transition.1",
+                        "metadata": {},
+                        "name": "dissolve",
+                        "transition_type": "SMPTE_Dissolve",
+                        "in_offset": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 12.0},
+                        "out_offset": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 12.0}
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.1",
+                        "metadata": {},
+                        "name": "shot2",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 72.0},
+                            "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 1013.0}
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "media_reference": {
+                            "OTIO_SCHEMA": "ImageSequenceReference.1",
+                            "metadata": {},
+                            "name": "",
+                            "available_range": {
+                                "OTIO_SCHEMA": "TimeRange.1",
+                                "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 200.0},
+                                "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 1001.0}
+                            },
+                            "available_image_bounds": null,
+                            "target_url_base": "file:///Volumes/plates/shot2/",
+                            "name_prefix": "shot2.",
+                            "name_suffix": ".exr",
+                            "start_frame": 1001,
+                            "frame_step": 1,
+                            "rate": 24.0,
+                            "frame_zero_padding": 4,
+                            "missing_frame_policy": "error"
+                        }
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 24.0},
+                            "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 0.0}
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true
+                    }
+                ]
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "V2",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "kind": "Video",
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 24.0},
+                            "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 0.0}
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.1",
+                        "metadata": {},
+                        "name": "fast",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 24.0},
+                            "start_time": {"OTIO_SCHEMA": "RationalTime.1", "rate": 24.0, "value": 0.0}
+                        },
+                        "effects": [
+                            {"OTIO_SCHEMA": "LinearTimeWarp.1", "metadata": {}, "name": "", "effect_name": "LinearTimeWarp", "time_scalar": 2.0}
+                        ],
+                        "markers": [],
+                        "enabled": true,
+                        "media_reference": {"OTIO_SCHEMA": "MissingReference.1", "metadata": {}, "name": "", "available_range": null, "available_image_bounds": null}
+                    }
+                ]
+            }
+        ]
+    }
+}

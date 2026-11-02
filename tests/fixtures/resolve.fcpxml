@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+    <resources>
+        <format id="r1" name="FFVideoFormat1080p2398" frameDuration="1001/24000s" width="1920" height="1080"/>
+        <asset id="r2" name="A001" start="86486400/24000s" duration="2402400/24000s" hasVideo="1" format="r1" hasAudio="1" audioSources="1" audioChannels="2">
+            <media-rep kind="original-media" src="file:///C:/Footage/A001.mov"/>
+        </asset>
+        <asset id="r3" name="C001" start="0s" duration="500500/24000s" hasVideo="1" format="r1" src="file:///C:/Footage/C001.mov"/>
+        <asset id="r4" name="B001" start="0s" duration="1001000/24000s" hasVideo="1" format="r1">
+            <media-rep kind="original-media" src="file:///C:/Footage/B001.mov"/>
+        </asset>
+        <asset id="r6" name="Music" start="0s" duration="2402400/24000s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2">
+            <media-rep kind="original-media" src="file:///C:/Footage/music.wav"/>
+        </asset>
+        <asset id="r7" name="D001" start="0s" duration="1001000/24000s" hasVideo="1" format="r1" src="file:///C:/Footage/D001.mov"/>
+        <media id="r5" name="Compound 1">
+            <sequence format="r1" duration="48048/24000s" tcStart="86486400/24000s" tcFormat="NDF">
+                <spine>
+                    <asset-clip ref="r2" offset="86486400/24000s" name="A001" start="86486400/24000s" duration="48048/24000s"/>
+                </spine>
+            </sequence>
+        </media>
+    </resources>
+    <library>
+        <event name="Timeline 1 (Resolve)">
+            <project name="Timeline 1">
+                <sequence format="r1" duration="240240/24000s" tcStart="86486400/24000s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+                    <spine>
+                        <asset-clip ref="r2" offset="86486400/24000s" name="A001" start="86510424/24000s" duration="96096/24000s" tcFormat="NDF">
+                            <asset-clip ref="r3" lane="1" offset="86558472/24000s" name="C001" start="120120/24000s" duration="48048/24000s"/>
+                            <ref-clip ref="r5" lane="2" offset="86510424/24000s" name="Compound 1" start="86498412/24000s" duration="24024/24000s"/>
+                            <asset-clip ref="r6" lane="-1" offset="86510424/24000s" name="Music" start="0s" duration="240240/24000s"/>
+                            <marker start="86522436/24000s" duration="1001/24000s" value="clip marker"/>
+                        </asset-clip>
+                        <transition name="Cross Dissolve" offset="86570484/24000s" duration="24024/24000s">
+                            <filter-video ref="r8" name="Cross Dissolve"/>
+                        </transition>
+                        <asset-clip ref="r4" offset="86582496/24000s" name="B001" start="12012/24000s" duration="96096/24000s" tcFormat="NDF"/>
+                        <gap name="Gap" offset="86678592/24000s" start="0s" duration="48048/24000s">
+                            <asset-clip ref="r7" lane="1" offset="4004/24000s" name="D001 50%" start="10010/24000s" duration="24024/24000s">
+                                <timeMap>
+                                    <timept time="10010/24000s" value="10010/24000s" interp="linear"/>
+                                    <timept time="34034/24000s" value="22022/24000s" interp="linear"/>
+                                </timeMap>
+                            </asset-clip>
+                            <marker start="8008/24000s" duration="1001/24000s" value="end gap marker"/>
+                        </gap>
+                    </spine>
+                </sequence>
+            </project>
+        </event>
+    </library>
+</fcpxml>

@@ -1,0 +1,4 @@
+* text=auto
+*.edl -text
+*.aex binary
+*.png binary
